@@ -11,7 +11,7 @@
 	</div>
 	
 	<div id="apper">
-	<p class="ap" align="center"><img id="change_image" src="../images/main.PNG"></p>
+	<p class="ap" align="center"><img id="change_image" src="images/main.PNG"></p>
 	</font></p>
 	</div>
 	<p>
@@ -20,7 +20,24 @@
 		<span class="checkbox-switch-switch"  data-label-on="&nbsp;" data-label-off="&nbsp;"> </span>
 	</label>
 	</p>
-
+	<script>
+		
+		async function onClick()
+		{
+			let response = await fetch("/switch");
+			response = await response.json();
+		}
+		
+		window.onload = async function onLoad()
+		{
+			let response = await fetch("/switchinfo");
+			response = await response.json();
+			if(response === true)
+				document.querySelector(".checkbox1").setAttribute("checked", "true");
+			else
+				document.querySelector(".checkbox1").removeAttribute("checked");
+		}
+	</script>
 	
 	</BODY>
 	</HTML>
